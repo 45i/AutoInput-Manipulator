@@ -4,7 +4,7 @@ import time
 import pyautogui
 
 e = Exception
-try: 
+try:
     words = """aardvark
     aardwolf
     aaron
@@ -58115,26 +58115,31 @@ zooplankton
 zoos 
 zulu 
 zulus """
-    buttons=['left','right']
+    buttons = ['left', 'right']
     words_list = words.split()
-    randomword=random.randrange(0, len(words_list))
-    randombutton=random.randrange(0, len(buttons))
+    randomword = random.randrange(0, len(words_list))
+    randombutton = random.randrange(0, len(buttons))
     choice = input("AutoClick for mouse or keyboard?: react with 'mouse','keyboard' or 'both'")
-    i=0
-    if "both" in choice.lower() :
-        a = int(input(f"Clicks: (For Example: {random.randint(1,58117)}) "))
+    i = 0
+    countr = 0
+    if "both" in choice.lower():
+        a = int(input(f"Clicks: (For Example: {random.randint(1, 58117)}) "))
 
-        tap=int(input(f"Key Taps: (For Example: {random.randint(1,58117)}) "))
+        tap = int(input(f"Key Taps: (For Example: {random.randint(1, 58117)}) "))
         b = input(f"Which Mouse Button?: React with 'left' or 'right' (For Example: {buttons[randombutton]} )")
         c = input(f"Which string to type? (For Example: {words_list[randomword]} )")
         if c.lower() == "random":
-            c=words_list[randomword]
+            c = words_list[randomword]
         b_split = b.lower().split()
         time.sleep(5)
         pyautogui.click(clicks=a, interval=0.2, button=b_split[0])
-        while i < tap:
-            pyautogui.keyDown(key=c)
-            i+=1
+        while i <= tap:
+            countr = 0
+            while countr < len(c):
+                pyautogui.keyDown(key=c[countr])
+                countr += 1
+
+            i += 1
     elif "keyboard" in choice.lower():
 
         tap = int(input(f"Key Taps: (For Example: {random.randint(1, 58117)}) "))
@@ -58145,14 +58150,19 @@ zulus """
 
         time.sleep(5)
 
-        while i < tap:
-            pyautogui.keyDown(key=c)
+        while i <= tap:
+            countr=0
+            while countr < len(c):
+                pyautogui.keyDown(key=c[countr])
+                countr += 1
+
             i += 1
-        pyautogui.keyDown(key=c)
+
     elif "mouse" in choice.lower():
         a = int(input(f"Clicks: (For Example: {random.randint(1, 58117)}) "))
         b = input(f"Which Mouse Button?: React with 'left' or 'right' (For Example: {buttons[randombutton]} )")
         b_split = b.lower().split()
+
         time.sleep(5)
         pyautogui.click(clicks=a, interval=0.2, button=b_split[0])
 except pyautogui.FailSafeException:
