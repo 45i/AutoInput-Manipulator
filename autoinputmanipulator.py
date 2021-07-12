@@ -4,7 +4,7 @@ import time
 import pyautogui
 
 e = Exception
-try:
+try: 
     words = """aardvark
     aardwolf
     aaron
