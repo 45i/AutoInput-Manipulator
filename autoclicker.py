@@ -1,6 +1,5 @@
 import pyautogui
 import time
-
 e= Exception
 try:
     a = int(input("Clicks: "))
